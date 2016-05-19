@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+N:\ECE455\Lab1\lab1.uvproj
+Project File Date:  05/19/2016
+
+<h2>Output:</h2>
+"N:\Software\Sublime2\sublime_text.exe" N:\ECE455\Lab1\lab1.uvproj
+"N:\Software\Sublime2\sublime_text.exe" N:\ECE455\Lab1\lab1.uvproj
+"N:\Software\Sublime2\sublime_text.exe" N:\ECE455\Lab1\main.c
+"N:\Software\Sublime2\sublime_text.exe" N:\ECE455\Lab1\main.c
+Build target 'LPC1768 Flash'
+assembling startup_LPC17xx.s...
+compiling GLCD_SPI_LPC1700.c...
+compiling system_LPC17xx.c...
+compiling main.c...
+main.c(2): error:  #5: cannot open source input file "glcd.h": No such file or directory
+Target not created
+Build target 'LPC1768 Flash'
+compiling main.c...
+main.c(6): error:  #7: unrecognized token
+main.c(6): error:  #65: expected a ";"
+main.c(6): error:  #7: unrecognized token
+main.c(7): error:  #7: unrecognized token
+main.c(7): error:  #7: unrecognized token
+main.c(8): error:  #7: unrecognized token
+main.c(8): error:  #7: unrecognized token
+main.c(9): error:  #7: unrecognized token
+main.c(9): error:  #7: unrecognized token
+main.c(10): error:  #7: unrecognized token
+main.c(10): error:  #7: unrecognized token
+main.c(11): warning:  #1-D: last line of file ends without a newline
+main.c(11): warning:  #12-D: parsing restarts here after previous syntax error
+compiling GLCD_SPI_LPC1700.c...
+compiling system_LPC17xx.c...
+Target not created
+Build target 'LPC1768 Flash'
+compiling main.c...
+main.c(11): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=2980 RO-data=6636 RW-data=12 ZI-data=612  
+"lab1.axf" - 0 Error(s), 1 Warning(s).
+Build target 'LPC1768 Flash'
+compiling main.c...
+linking...
+Program Size: Code=2980 RO-data=6636 RW-data=12 ZI-data=612  
+"lab1.axf" - 0 Error(s), 0 Warning(s).
