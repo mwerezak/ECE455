@@ -1,4 +1,5 @@
 #include <lpc17xx.h>
+#include <stdio.h>
 #include "glcd.h"
 
 /*
@@ -17,7 +18,7 @@ void software_delay(unsigned long delay_ms)
 {
 	//SystemFrequency is cycles per second
 	//cycles per ms is SystemFrequency/1000
-	//cycles per N is N*SystemFrequency/1000
+	//cycles per N ms is N*SystemFrequency/1000
 	const unsigned long numiter = (SystemFrequency/1000)*delay_ms;
 	int i;
 
@@ -26,30 +27,37 @@ void software_delay(unsigned long delay_ms)
 	__enable_irq(); //Enable interrupts
 }
 
-/*
-void displayFormattedTime(unsigned long elapsed_ms)
+void displayFormattedTime(unsigned int elapsed_secs)
 {
-	unsigned int elapsed_secs = elapsed_ms/1000;
-	unsigned int elapsed_mins = elapsed_ms/(60*1000);
+	unsigned int elapsed_mins = elapsed_secs/60;
 
-	char clock_str[5];
-	snprintf(clock_str, 5, "%02u:%02u", elapsed_mins % 60, elapsed_secs % 60);
+	const int str_sz = 6;
+	unsigned char clock_str[str_sz];
+	snprintf((char*)clock_str, str_sz, "%02u:%02u", elapsed_mins % 60, elapsed_secs % 60);
 
 	GLCD_DisplayString(0, 0, 1, clock_str);
 }
-*/
+
+void runTimer()
+{
+	int elapsed_sec = 0; //elapsed seconds
+
+	do
+	{
+		displayFormattedTime(elapsed_sec);
+		software_delay(1000);
+		elapsed_sec++;
+	}
+	while(elapsed_sec < 60*10);
+}
 
 int main(void)
 {
 	SystemInit();
 	GLCD_Init();
 	GLCD_Clear(White);
-	GLCD_DisplayString(0, 0, 1, "Foo");
 
-	software_delay(1*1000);
-
-	GLCD_DisplayString(0, 3, 1, "bar");
-
+	runTimer();
 
 	return 0;
 }
