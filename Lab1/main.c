@@ -63,13 +63,31 @@ void runSoftwareTimer()
 	while(elapsed_sec <= 60*10);
 }
 
+
+void runHardwareTimer()
+{
+	LPC_TIM0->TCR = 0x02; // reset timer
+	LPC_TIM0->TCR = 0x01; // enable timer
+	LPC_TIM0->MR0 = 2048; // match value (can be anything)
+	LPC_TIM0->MCR |= 0x03; // on match, generate interrupt and reset
+	NVIC_EnableIRQ(TIMER0_IRQn); // allow interrupts from the timer
+	displayFormattedTime(42);
+}
+
+void TIMER0_IRQHandler(void)
+{
+	static int i = 0;
+	GLCD_DisplayString(0, (i++) % 8, 1, "foo");
+	LPC_TIM0->IR |= 0x01;
+}
+
 int main(void)
 {
 	SystemInit();
 	GLCD_Init();
 	GLCD_Clear(White);
 
-	runSoftwareTimer();
+	runHardwareTimer();
 
 	return 0;
 }
