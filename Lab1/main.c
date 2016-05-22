@@ -14,16 +14,28 @@
 
 */
 
+/*
+	RESULTS
+	* 1st run: calibration = 1.0
+		Software Delay Clock: 10:00 (600 s)
+		Stopwatch: 7:07 (427 s)				   
+
+	* 2nd run: calibration = 1.40
+		Software Delay Clock: 10:00	(600 s)
+		Stopwatch: 9:45	(585 s)
+	
+*/
+#define SOFTWARE_DELAY_CALIBRATION 1.40
 void software_delay(unsigned long delay_ms)
 {
 	//SystemFrequency is cycles per second
 	//cycles per ms is SystemFrequency/1000
 	//cycles per N ms is N*SystemFrequency/1000
-	const unsigned long numiter = (SystemFrequency/1000)*delay_ms;
+	const double numiter = SystemFrequency*delay_ms/1000*SOFTWARE_DELAY_CALIBRATION;
 	int i;
 
 	__disable_irq(); //Disable interrupts
-	for(i = 0; i < numiter; i++);
+	for(i = 0; i < numiter; i++); //note: second for loop is in runTimer()
 	__enable_irq(); //Enable interrupts
 }
 
@@ -48,7 +60,7 @@ void runTimer()
 		software_delay(1000);
 		elapsed_sec++;
 	}
-	while(elapsed_sec < 60*10);
+	while(elapsed_sec <= 60*10);
 }
 
 int main(void)
