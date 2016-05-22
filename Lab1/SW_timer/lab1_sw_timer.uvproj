@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>lab1</OutputName>
+          <OutputName>lab1_sw_timer</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -384,7 +384,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source</GroupName>
+          <GroupName>Source Code</GroupName>
           <Files>
             <File>
               <FileName>startup_LPC17xx.s</FileName>
@@ -392,24 +392,24 @@
               <FilePath>.\startup_LPC17xx.s</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FileName>GLCD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mcb1700_ece\GLCD.h</FilePath>
             </File>
             <File>
               <FileName>GLCD_SPI_LPC1700.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\GLCD_SPI_LPC1700.c</FilePath>
+              <FilePath>.\mcb1700_ece\GLCD_SPI_LPC1700.c</FilePath>
             </File>
             <File>
               <FileName>system_LPC17xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\system_LPC17xx.c</FilePath>
+              <FilePath>.\mcb1700_ece\system_LPC17xx.c</FilePath>
             </File>
             <File>
-              <FileName>GLCD.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\GLCD.h</FilePath>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
             </File>
           </Files>
         </Group>
