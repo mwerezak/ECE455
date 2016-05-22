@@ -15,7 +15,7 @@
 */
 
 /*
-	RESULTS
+	SOFTWARE TIMER RESULTS
 	* 1st run: calibration = 1.0
 		Software Delay Clock: 10:00 (600 s)
 		Stopwatch: 7:07 (427 s)				   
@@ -64,21 +64,50 @@ void runSoftwareTimer()
 }
 
 
+/*
+	HARDWARE TIMER RESULTS
+	* 1st run: calibration = 1.0
+		Software Delay Clock: 10:00 (600 s)
+		Stopwatch: 7:07 (427 s)				   
+
+	* 2nd run: calibration = 1.40
+		Software Delay Clock: 10:00	(600 s)
+		Stopwatch: 9:45	(585 s)
+	
+*/
+int elapsed_secs = 0;
+int updateClock = 1;
+
 void runHardwareTimer()
 {
 	LPC_TIM0->TCR = 0x02; // reset timer
 	LPC_TIM0->TCR = 0x01; // enable timer
-	LPC_TIM0->MR0 = 2048; // match value (can be anything)
+	LPC_TIM0->MR0 = SystemFrequency/4; // match value (Pclk = Cclk/4 according to PCLKSEL0)
 	LPC_TIM0->MCR |= 0x03; // on match, generate interrupt and reset
 	NVIC_EnableIRQ(TIMER0_IRQn); // allow interrupts from the timer
-	displayFormattedTime(42);
+
+	while(1)
+	{
+		if(updateClock) 
+		{
+			displayFormattedTime(elapsed_secs);
+			updateClock = 0;
+
+			if(elapsed_secs >= 60*10)
+			{
+				LPC_TIM0->TCR = 0x00; // disable timer
+				return;
+			}
+		}
+	}
 }
 
 void TIMER0_IRQHandler(void)
 {
-	static int i = 0;
-	GLCD_DisplayString(0, (i++) % 8, 1, "foo");
 	LPC_TIM0->IR |= 0x01;
+
+	elapsed_secs++;
+	updateClock = 1;
 }
 
 int main(void)
