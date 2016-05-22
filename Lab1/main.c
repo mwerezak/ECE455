@@ -66,13 +66,8 @@ void runSoftwareTimer()
 
 /*
 	HARDWARE TIMER RESULTS
-	* 1st run: calibration = 1.0
-		Software Delay Clock: 10:00 (600 s)
-		Stopwatch: 7:07 (427 s)				   
-
-	* 2nd run: calibration = 1.40
-		Software Delay Clock: 10:00	(600 s)
-		Stopwatch: 9:45	(585 s)
+		Hardware interrupt Clock: 10:00 (600 s)
+		Stopwatch: 9:59 (599 s)
 	
 */
 int elapsed_secs = 0;
