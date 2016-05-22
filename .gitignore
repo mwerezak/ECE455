@@ -26,6 +26,7 @@
 .#*
 *.uvgui.*
 *.uvopt
+*.dep
 
 ### C ###
 # Object files
