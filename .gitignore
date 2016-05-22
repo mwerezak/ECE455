@@ -28,6 +28,9 @@
 *.uvopt
 *.dep
 
+### MS Word ###
+~$*.docx
+
 ### C ###
 # Object files
 *.o
