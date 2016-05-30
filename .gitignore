@@ -27,6 +27,7 @@
 *.uvgui.*
 *.uvopt
 *.dep
+*.sct
 
 ### MS Word ###
 ~$*.docx
