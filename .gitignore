@@ -6,8 +6,6 @@
 *.htm
 *.Inp
 *.map
-*.tra
-*.dep
 *.__i
 *.crf
 *.d
@@ -22,12 +20,10 @@
 *.l1p
 *.l2p
 *.iex
-*.plg
 .#*
 *.uvgui.*
 *.uvopt
 *.dep
-*.sct
 
 ### MS Word ###
 ~$*.docx
