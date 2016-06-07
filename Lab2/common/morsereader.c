@@ -43,12 +43,18 @@ static void MorseReader_HandlePushbutton(void)
 	{
 		if(timer_ticks > DEBOUNCE_DELAY && !pb_pressed)
 		{
+			MorseReader_RegisterInput(timer_ticks < DASH_DELAY? INPUT_DOT : INPUT_DASH);
+			_debouncing = DEBOUNCE_READY;
+			Timer_Reset();
+
+			/*
 			_debouncing = DEBOUNCE_DEPRESSED;
 			Timer_Reset();
 
 			MorseReader_RegisterInput(timer_ticks < DASH_DELAY? INPUT_DOT : INPUT_DASH);
 
 			Timer_Start();
+			*/
 		}
 	}
 	else if(_debouncing == DEBOUNCE_DEPRESSED)
