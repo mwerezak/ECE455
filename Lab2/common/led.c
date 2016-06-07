@@ -12,7 +12,7 @@ void LED_Init(void)
 	LPC_GPIO2->FIODIR |= 0x0000007C; // LEDs on PORT2
 }
 
-void LED_Set(int led)
+void LED_On(int led)
 {
 	int mask;
 
@@ -32,4 +32,9 @@ void LED_Clear(int led)
 	mask = 1 << led_pos[led];
 	if (led < 3) { LPC_GPIO1->FIOCLR = mask; }
 	else { LPC_GPIO2->FIOCLR = mask; }
+}
+
+void LED_Set(int led, int set)
+{
+	if(set) { LED_On(led); } else { LED_Clear(led); }
 }

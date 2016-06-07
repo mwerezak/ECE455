@@ -5,15 +5,6 @@
 
 #define TIM0_FREQUENCY (SystemCoreClock/4)
 
-
-//*** DebounceTest
-
-void DebounceTest_Init(void);
-void DebounceTest_Reset(void);
-void DebounceTest_Run(void);
-static void DebounceTest_HandleEdge(int edgeval);
-static void DebounceTest_PrintInfo(void);
-
 //*** Pushbutton
 
 void Pushbutton_Init(void);

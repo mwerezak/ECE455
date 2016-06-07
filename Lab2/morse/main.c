@@ -3,6 +3,7 @@
 
 #include "../common/led.h"
 #include "../common/pushbutton.h"
+#include "../common/morsereader.h"
 
 int main()
 {
@@ -10,8 +11,12 @@ int main()
 	GLCD_Init();
 	GLCD_Clear(White);
 
-	DebounceTest_Init();
-	DebounceTest_Run();
+	LED_Init();
+	Pushbutton_Init();
+	Timer_Init();
+
+	MorseReader_Init();
+	MorseReader_TestRun();
 
 	return 0;
 }
