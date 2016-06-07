@@ -1,27 +1,17 @@
 #include <lpc17xx.h>
 #include "../mcb1700_ece/glcd.h"
 
-#include "../io/led.h"
-#include "../io/pushbutton.h"
+#include "../common/led.h"
+#include "../common/pushbutton.h"
 
 int main()
 {
 	SystemInit();
 	GLCD_Init();
 	GLCD_Clear(White);
-	GLCD_DisplayString(0, 0, 1, "Pushbutton Test");
 
-	//GLCD_DisplayString(0, 1, 1, "Falling Edge!");
-
-	LED_Init();
-	//LED_Set(1);
-	//LED_Set(3);
-	//LED_Set(5);
-	//LED_Set(7);
-
-	Pushbutton_Init();
-	Pushbutton_WaitForEvent();
-	LED_Set(1);
+	DebounceTest_Init();
+	DebounceTest_Run();
 
 	return 0;
 }

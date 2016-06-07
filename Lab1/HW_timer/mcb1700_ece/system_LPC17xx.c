@@ -387,7 +387,7 @@
 /*----------------------------------------------------------------------------
   Clock Variable definitions
  *----------------------------------------------------------------------------*/
-uint32_t SystemFrequency = IRC_OSC; /*!< System Clock Frequency (Core Clock)  */
+uint32_t SystemCoreClock = IRC_OSC; /*!< System Clock Frequency (Core Clock)  */
 
 
 /**
@@ -397,7 +397,7 @@ uint32_t SystemFrequency = IRC_OSC; /*!< System Clock Frequency (Core Clock)  */
  * @return none
  *
  * @brief  Setup the microcontroller system.
- *         Initialize the System and update the SystemFrequency variable.
+ *         Initialize the System and update the SystemCoreClock variable.
  */
 void SystemInit (void)
 {
@@ -450,19 +450,19 @@ void SystemInit (void)
     switch (LPC_SC->CLKSRCSEL & 0x03) {
       case 0:                           /* Internal RC oscillator => PLL0     */
       case 3:                           /* Reserved, default to Internal RC   */
-        SystemFrequency = (IRC_OSC * 
+        SystemCoreClock = (IRC_OSC * 
                           ((2 * ((LPC_SC->PLL0STAT & 0x7FFF) + 1)))  /
                           (((LPC_SC->PLL0STAT >> 16) & 0xFF) + 1)    /
                           ((LPC_SC->CCLKCFG & 0xFF)+ 1));
         break;
       case 1:                           /* Main oscillator => PLL0            */
-        SystemFrequency = (OSC_CLK * 
+        SystemCoreClock = (OSC_CLK * 
                           ((2 * ((LPC_SC->PLL0STAT & 0x7FFF) + 1)))  /
                           (((LPC_SC->PLL0STAT >> 16) & 0xFF) + 1)    /
                           ((LPC_SC->CCLKCFG & 0xFF)+ 1));
         break;
       case 2:                           /* RTC oscillator => PLL0             */
-        SystemFrequency = (RTC_CLK * 
+        SystemCoreClock = (RTC_CLK * 
                           ((2 * ((LPC_SC->PLL0STAT & 0x7FFF) + 1)))  /
                           (((LPC_SC->PLL0STAT >> 16) & 0xFF) + 1)    /
                           ((LPC_SC->CCLKCFG & 0xFF)+ 1));
@@ -472,13 +472,13 @@ void SystemInit (void)
     switch (LPC_SC->CLKSRCSEL & 0x03) {
       case 0:                           /* Internal RC oscillator => PLL0     */
       case 3:                           /* Reserved, default to Internal RC   */
-        SystemFrequency = IRC_OSC / ((LPC_SC->CCLKCFG & 0xFF)+ 1);
+        SystemCoreClock = IRC_OSC / ((LPC_SC->CCLKCFG & 0xFF)+ 1);
         break;
       case 1:                           /* Main oscillator => PLL0            */
-        SystemFrequency = OSC_CLK / ((LPC_SC->CCLKCFG & 0xFF)+ 1);
+        SystemCoreClock = OSC_CLK / ((LPC_SC->CCLKCFG & 0xFF)+ 1);
         break;
       case 2:                           /* RTC oscillator => PLL0             */
-        SystemFrequency = RTC_CLK / ((LPC_SC->CCLKCFG & 0xFF)+ 1);
+        SystemCoreClock = RTC_CLK / ((LPC_SC->CCLKCFG & 0xFF)+ 1);
         break;
     }
   }

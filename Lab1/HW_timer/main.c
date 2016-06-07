@@ -27,7 +27,7 @@ void runHardwareTimer()
 {
 	LPC_TIM0->TCR = 0x02; // reset timer
 	LPC_TIM0->TCR = 0x01; // enable timer
-	LPC_TIM0->MR0 = SystemFrequency/4; // match value (Pclk = Cclk/4 according to PCLKSEL0)
+	LPC_TIM0->MR0 = SystemCoreClock/4; // match value (Pclk = Cclk/4 according to PCLKSEL0)
 	LPC_TIM0->MCR |= 0x03; // on match, generate interrupt and reset
 	NVIC_EnableIRQ(TIMER0_IRQn); // allow interrupts from the timer
 

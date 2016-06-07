@@ -16,7 +16,7 @@ Section Cross References
     startup_lpc17xx.o(.text) refers to startup_lpc17xx.o(STACK) for Stack_Mem
     glcd_spi_lpc1700.o(.text) refers to glcd_spi_lpc1700.o(.data) for driverCode
     glcd_spi_lpc1700.o(.text) refers to glcd_spi_lpc1700.o(.constdata) for Font_6x8_h
-    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for SystemFrequency
+    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
     main.o(.text) refers to _printf_pad.o(.text) for _printf_pre_padding
     main.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     main.o(.text) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
@@ -28,7 +28,7 @@ Section Cross References
     main.o(.text) refers to noretval__2snprintf.o(.text) for __2snprintf
     main.o(.text) refers to glcd_spi_lpc1700.o(.text) for GLCD_DisplayString
     main.o(.text) refers to system_lpc17xx.o(.text) for SystemInit
-    main.o(.text) refers to system_lpc17xx.o(.data) for SystemFrequency
+    main.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
     __2snprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
     __2snprintf.o(.text) refers to _sputc.o(.text) for _sputc
     __2snprintf.o(.text) refers to _snputc.o(.text) for _snputc
@@ -573,7 +573,7 @@ Image Symbol Table
     Font_16x24_h                             0x000016de   Data        5376  glcd_spi_lpc1700.o(.constdata)
     Region$$Table$$Base                      0x00002bf0   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x00002c10   Number         0  anon$$obj.o(Region$$Table)
-    SystemFrequency                          0x10000008   Data           4  system_lpc17xx.o(.data)
+    SystemCoreClock                          0x10000008   Data           4  system_lpc17xx.o(.data)
     __libspace_start                         0x1000000c   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x1000006c   Data           0  libspace.o(.bss)
 
