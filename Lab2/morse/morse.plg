@@ -7,5 +7,327 @@ C:\Users\mwerezak\Desktop\ECE455\Lab2\morse\morse.uvproj
 Project File Date:  06/09/2016
 
 <h2>Output:</h2>
+Build target 'LPC1768 Flash'
+assembling startup_LPC17xx.s...
+compiling main.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling system_LPC17xx.c...
+compiling led.c...
+compiling morsereader.c...
+compiling pushbutton.c...
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.h(8): error:  #20: identifier "FSMState" is undefined
+..\fsm\fsm.h(8): error:  #20: identifier "FSM_NUM_INPUT_TYPES" is undefined
+..\fsm\fsm.h(11): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.h(8): error:  #20: identifier "FSMState" is undefined
+..\fsm\fsm.h(8): error:  #20: identifier "FSM_NUM_INPUT_TYPES" is undefined
+..\fsm\fsm.h(11): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm_config.h(8): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.h(10): error:  #20: identifier "FSMState" is undefined
+..\fsm\fsm.h(13): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm_config.h(8): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.h(10): error:  #20: identifier "FSMState" is undefined
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm_config.h(8): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.h(10): error:  #20: identifier "FSMState" is undefined
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm_config.h(8): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.h(12): error:  #101: "FSMState" has already been declared in the current scope
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(1): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm_config.h(9): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 2 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm_config.h(9): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 1 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\mwerezak\\Desktop\\ECE455\\Lab2\\morse\\morse.AXF" 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'LPC1768 Flash'
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Clean started: Project: 'morse'
+   deleting intermediate output files for target 'LPC1768 Flash'
+Build target 'LPC1768 Flash'
+assembling startup_LPC17xx.s...
+compiling main.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling system_LPC17xx.c...
+compiling led.c...
+compiling morsereader.c...
+compiling pushbutton.c...
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(24): error:  #20: identifier "NULL" is undefined
+..\fsm\fsm.c(13): warning:  #177-D: function "FSM_CreateState" was declared but never referenced
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(24): error:  #20: identifier "null" is undefined
+..\fsm\fsm.c(13): warning:  #177-D: function "FSM_CreateState" was declared but never referenced
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(13): warning:  #177-D: function "FSM_CreateState" was declared but never referenced
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 1 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(14): warning:  #223-D: function "FSM_CreateState" declared implicitly
+..\fsm\fsm.c(17): error:  #159: declaration is incompatible with previous "FSM_CreateState" (declared at line 14)
+..\fsm\fsm.c(36): error:  #29: expected an expression
+..\fsm\fsm.c(39): warning:  #940-D: missing return statement at end of non-void function "GetState"
+..\fsm\fsm.c(44): warning:  #177-D: variable "cur_state" was declared but never referenced
+..\fsm\fsm.c(17): warning:  #177-D: function "FSM_CreateState" was declared but never referenced
+..\fsm\fsm.c(34): warning:  #177-D: function "GetState" was declared but never referenced
+..\fsm\fsm.c(53): warning:  #177-D: function "FSM_RaiseError" was declared but never referenced
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(36): error:  #29: expected an expression
+..\fsm\fsm.c(39): warning:  #940-D: missing return statement at end of non-void function "GetState"
+..\fsm\fsm.c(44): warning:  #177-D: variable "cur_state" was declared but never referenced
+..\fsm\fsm.c(34): warning:  #177-D: function "GetState" was declared but never referenced
+..\fsm\fsm.c(53): warning:  #177-D: function "FSM_RaiseError" was declared but never referenced
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(42): warning:  #177-D: variable "cur_state" was declared but never referenced
+..\fsm\fsm.c(34): warning:  #177-D: function "GetState" was declared but never referenced
+..\fsm\fsm.c(51): warning:  #177-D: function "FSM_RaiseError" was declared but never referenced
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 3 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(51): warning:  #177-D: function "FSM_RaiseError" was declared but never referenced
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 1 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm_error.h(6): warning:  #1-D: last line of file ends without a newline
+..\fsm\fsm.c(48): warning:  #177-D: variable "this_input" was declared but never referenced
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 2 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(48): warning:  #177-D: variable "this_input" was declared but never referenced
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 1 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(50): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+..\fsm\fsm.c(55): error:  #513: a value of type "unsigned int" cannot be assigned to an entity of type "unsigned int *"
+..\fsm\fsm.c(66): error:  #513: a value of type "unsigned int *" cannot be assigned to an entity of type "unsigned int"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+Target not created
+Clean started: Project: 'morse'
+   deleting intermediate output files for target 'LPC1768 Flash'
+Build target 'LPC1768 Flash'
+assembling startup_LPC17xx.s...
+compiling main.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling system_LPC17xx.c...
+compiling led.c...
+compiling morsereader.c...
+compiling pushbutton.c...
+compiling fsm.c...
+..\fsm\fsm.c(52): error:  #18: expected a ")"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(44): warning:  #177-D: variable "new_state" was declared but never referenced
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 1 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.h(6): warning:  #260-D: explicit type is missing ("int" assumed)
+..\fsm\fsm.h(6): error:  #65: expected a ";"
+..\fsm\fsm.h(7): warning:  #260-D: explicit type is missing ("int" assumed)
+..\fsm\fsm.h(7): error:  #65: expected a ";"
+..\fsm\fsm.c(69): error:  #136: struct "<unnamed>" has no field "next_state_id"
+..\fsm\fsm.c(72): error:  #65: expected a ";"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(69): error:  #136: struct "<unnamed>" has no field "next_state_id"
+..\fsm\fsm.c(72): error:  #65: expected a ";"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.h(6): warning:  #260-D: explicit type is missing ("int" assumed)
+..\fsm\fsm.h(6): error:  #65: expected a ";"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(70): error:  #136: struct "<unnamed>" has no field "next_state_id"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+..\fsm\fsm.c(70): error:  #136: struct "<unnamed>" has no field "next_state_id"
+Target not created
+Build target 'LPC1768 Flash'
+compiling fsm.c...
+linking...
+Program Size: Code=3610 RO-data=6530 RW-data=24 ZI-data=608  
+"morse.axf" - 0 Error(s), 0 Warning(s).
 Clean started: Project: 'morse'
    deleting intermediate output files for target 'LPC1768 Flash'
