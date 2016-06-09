@@ -18,7 +18,7 @@ void LCD_Print(unsigned int row, unsigned int col, const char* format, ...)
 
 	va_list args;
 	va_start(args, format);
-	vsprintf(linebuf, format, args)
+	vsprintf(linebuf, format, args);
 	va_end(args);
 }
 
