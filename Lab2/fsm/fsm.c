@@ -92,6 +92,9 @@ static int FSM_AddOutput(FSMState *state, char *new_output)
 	return 0;
 }
 
+//Helper used to create the FSM.
+//Not strictly necessary, it's also possible to create each of the states
+//individually and then link them up using FSM_AddStateTransition() directly.
 int FSM_CreateInputSequence(char *seq_output, int seq_length, FSMInput input_sequence[])
 {
 	int input_idx;
