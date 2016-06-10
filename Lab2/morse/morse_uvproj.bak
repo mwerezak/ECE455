@@ -451,6 +451,16 @@
               <FileType>1</FileType>
               <FilePath>..\fsm\fsm.c</FilePath>
             </File>
+            <File>
+              <FileName>fsm_error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\fsm\fsm_error.c</FilePath>
+            </File>
+            <File>
+              <FileName>fsm_runner.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\fsm\fsm_runner.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

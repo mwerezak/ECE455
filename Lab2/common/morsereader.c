@@ -1,5 +1,6 @@
 #include "morsereader.h"
 
+#include "timer.h"
 #include "pushbutton.h"
 #include "led.h"
 #include "../mcb1700_ece/glcd.h"
