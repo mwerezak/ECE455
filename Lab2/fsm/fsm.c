@@ -12,61 +12,126 @@ void FSM_Init(void)
 {
 	_num_states = 0;
 
-	FSM_CreateState("Initial State", 0);
+	FSM_CreateState(0);
 }
 
-static FSMState *FSM_CreateState(char *name, int is_final)
+static FSMState *FSM_CreateState(char *output)
 {
 	int i;
 	StateID new_state_idx = _num_states++;
+	FSMState *new_state;
 
-	FSMState *new_state = &_fsm_state_store[new_state_idx];
-	new_state->name = name;
-	new_state->is_final = is_final;
+	if(new_state_idx >= FSM_MAX_STATES)
+	{
+		FSM_RaiseError("too many states");
+		return 0;
+	}
+
+	new_state = &_fsm_state_store[new_state_idx];
 	new_state->state_id = new_state_idx;
+	if(output != 0)
+	{
+		new_state->output = output;
+		new_state->has_output = 1;
+	}
+	else
+	{
+		new_state->has_output = 0;
+	}
+	
 	for(i = 0; i < FSM_NUM_INPUT_TYPES; i++)
 	{
-		new_state->next_ids[i] = UNUSED;
+		new_state->state_transition[i] = UNUSED;
 	}
 
 	return new_state;
 }
 
-static FSMState *FSM_GetState(int state_id)
+FSMState *FSM_GetState(int state_id)
 {
 	return &_fsm_state_store[state_id];
 }
 
-void FSM_CreateInputSequence(char *seq_name, int seq_length, InputID input_sequence[])
+int FSM_HasNextState(FSMState *cur_state, FSMInput input)
 {
-	int cur_input;
-	InputID this_input;
-	StateID next_state_id;
-	FSMState *new_state, *cur_state = FSM_GetState(0); //start at the initial state
+	StateID next_state_id = cur_state->state_transition[input];
+	return (next_state_id != UNUSED);
+}
 
-	//enter the input sequence into the FSM, up to the last input
-	for(cur_input = 0; cur_input < seq_length - 1; cur_input++)
+FSMState *FSM_GetNextState(FSMState *cur_state, FSMInput input)
+{
+	StateID next_state_id = cur_state->state_transition[input];
+	if(next_state_id != UNUSED)
 	{
-		this_input = input_sequence[cur_input];
-		next_state_id = cur_state->next_ids[this_input];
+		return FSM_GetState(next_state_id);
+	}
+	return 0;
+}
 
-		if(next_state_id == 0)
-		{
-			new_state = FSM_CreateState("Intermediate State", 0);
-			cur_state->next_ids[this_input] = new_state->state_id;
-			cur_state = new_state;
-		}
-		else
-		{
-			cur_state = FSM_GetState(next_state_id);
-		}
+static int FSM_AddStateTransition(FSMState *from_state, FSMState *to_state, FSMInput trigger)
+{
+	if(from_state->state_transition[trigger] != UNUSED)
+	{
+		FSM_RaiseError("overwrite transition");
+		return 2;
 	}
 
-	//The final input to the FSM should then result in an end state
-	this_input = input_sequence[cur_input];
-	next_state_id = cur_state->next_ids[this_input];
+	from_state->state_transition[trigger] = to_state->state_id;
+	return 0;
+}
 
-	new_state = FSM_CreateState(seq_name, 1);
-	cur_state->next_ids[this_input] = new_state->state_id;
+static int FSM_AddOutput(FSMState *state, char *new_output)
+{
+	if(state->has_output)
+	{
+		FSM_RaiseError("conflicting output");
+		return 1;
+	}
+	state->output = new_output;
+	state->has_output = 1;
+	return 0;
+}
+
+int FSM_CreateInputSequence(char *seq_output, int seq_length, FSMInput input_sequence[])
+{
+	int input_idx;
+	FSMInput this_input;
+	FSMState *next_state, *cur_state = FSM_GetState(0); //start at the initial state
+
+	//enter the input sequence into the FSM, up to the last input
+	for(input_idx = 0; input_idx < seq_length; input_idx++)
+	{
+		this_input = input_sequence[input_idx];
+
+		if(input_idx < seq_length - 1) //intermediate state
+		{
+			if(FSM_HasNextState(cur_state, this_input))
+			{
+				next_state = FSM_GetNextState(cur_state, this_input);
+			}
+			else
+			{
+				next_state = FSM_CreateState(0);
+				FSM_AddStateTransition(cur_state, next_state, this_input);
+			}
+		}
+		else //add the output to the last state
+		{
+			if(FSM_HasNextState(cur_state, this_input))
+			{
+				next_state = FSM_GetNextState(cur_state, this_input);
+				FSM_AddOutput(next_state, seq_output);
+			}
+			else
+			{
+				next_state = FSM_CreateState(seq_output);
+				FSM_AddStateTransition(cur_state, next_state, this_input);
+			}
+		}
+
+		cur_state = next_state;
+	}
+
+	return 0; //should probably check for errors, but that would make this messy
 }
 

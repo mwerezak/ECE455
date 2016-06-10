@@ -9,8 +9,10 @@
 ### List of Objects: adding '"morsereader.o"'
 ### List of Objects: adding '"pushbutton.o"'
 ### List of Objects: adding '"fsm.o"'
+### List of Objects: adding '"fsm_error.o"'
+### List of Objects: adding '"fsm_runner.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 "startup_lpc17xx.o" "main.o" "glcd_spi_lpc1700.o" "system_lpc17xx.o" "led.o" "morsereader.o" "pushbutton.o" "fsm.o" 
+--cpu Cortex-M3 "startup_lpc17xx.o" "main.o" "glcd_spi_lpc1700.o" "system_lpc17xx.o" "led.o" "morsereader.o" "pushbutton.o" "fsm.o" "fsm_error.o" "fsm_runner.o" 
 --strict --scatter "morse.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -18,7 +20,7 @@
 ### ADS-LD Output File: 'morse.axf'
 ### ADS-LD Command File: 'morse.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'morse.lnp', Handle=0x000004E8
+### Creating CmdFile 'morse.lnp', Handle=0x000003E0
 ### Writing '.lnp' file
 ### ADS-LD Command file 'morse.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

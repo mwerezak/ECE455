@@ -443,6 +443,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>fsm</GroupName>
+          <Files>
+            <File>
+              <FileName>fsm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\fsm\fsm.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
