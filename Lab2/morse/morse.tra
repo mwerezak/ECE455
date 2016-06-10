@@ -20,7 +20,7 @@
 ### ADS-LD Output File: 'morse.axf'
 ### ADS-LD Command File: 'morse.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'morse.lnp', Handle=0x00000714
+### Creating CmdFile 'morse.lnp', Handle=0x00000698
 ### Writing '.lnp' file
 ### ADS-LD Command file 'morse.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

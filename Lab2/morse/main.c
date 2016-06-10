@@ -33,7 +33,7 @@ int main()
 #define DASH FSM_DASH
 static int CreateMorseFSM(void)
 {
-	FSMInput INIT[7] = {DOT, DASH, DASH, DOT, DASH, DOT, DOT};
+	FSMInput CORRECT[7] = {DOT, DASH, DASH, DOT, DASH, DOT, DOT};
 	FSM_CreateInputSequence("CORRECT", 7, CORRECT);
 
 	/*
