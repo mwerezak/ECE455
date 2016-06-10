@@ -3,18 +3,19 @@
 #include "pushbutton.h"
 #include "led.h"
 #include "../mcb1700_ece/glcd.h"
+#include <stdio.h>
 
 static int _debouncing;
 
 static int _last_input;
-static int _update_display;
+static int _input_recieved;
 
 void MorseReader_Init(void)
 {
 	_debouncing = DEBOUNCE_READY;
 
 	_last_input = INPUT_NEW;
-	_update_display = 0;
+	_input_recieved = 0;
 
 }
 
@@ -69,18 +70,18 @@ static void MorseReader_HandlePushbutton(void)
 
 static void MorseReader_RegisterInput(int input_type)
 {
-	_update_display = 1;
+	_input_recieved = 1;
 	_last_input = input_type;
 	MorseReader_UpdateLED();
 }
 
-void MorseReader_TestRun()
+void MorseReader_TestRun(void)
 {
 	while(1)
 	{
-		if(_update_display)
+		if(_input_recieved)
 		{
-			_update_display = 0;
+			_input_recieved = 0;
 
 			if(_last_input == INPUT_DOT)
 			{
@@ -107,3 +108,54 @@ void EINT3_IRQHandler(void)
 }
 
 #endif
+
+//Run the FSM
+#include "../fsm/fsm_runner.h"
+
+void MorseReader_FSMRun(void)
+{
+	unsigned char strbuf[20];
+	FSMRunner runner;
+	FSMRunner_Init(&runner);
+
+	while(1)
+	{
+		if(_input_recieved)
+		{
+			_input_recieved = 0;
+
+			if(_last_input == INPUT_DOT)
+			{
+				GLCD_DisplayString(0, 0, 1, "DOT ");
+				if(FSMRunner_ApplyInput(&runner, FSM_DOT))
+				{
+					FSMRunner_Reset(&runner); //If there was no state to transition to (invalid sequence), reset the FSMRunner
+				}
+			}
+			else if(_last_input == INPUT_DASH)
+			{
+				GLCD_DisplayString(0, 0, 1, "DASH");
+				if(FSMRunner_ApplyInput(&runner, FSM_DASH))
+				{
+					FSMRunner_Reset(&runner); //If there was no state to transition to (invalid sequence), reset the FSMRunner
+				}
+			}
+			else
+			{
+				GLCD_ClearLn(0, 1);
+			}
+
+			if(runner.has_output)
+			{
+				GLCD_DisplayString(1, 0, 1, (unsigned char*)runner.cur_output);
+			}
+			else
+			{
+				GLCD_ClearLn(1, 1);
+			}
+
+			snprintf((char*)strbuf, 20, "State: %u", runner.cur_state->state_id);
+			GLCD_DisplayString(5, 0, 1, strbuf);
+		}
+	}
+}

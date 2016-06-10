@@ -6,7 +6,7 @@
 typedef unsigned int FSMInput;
 typedef unsigned int StateID;
 
-typedef struct
+typedef struct FSMState
 {
 	StateID state_id;
 	char *output;

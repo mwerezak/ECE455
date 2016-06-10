@@ -3,7 +3,8 @@
 
 #include "fsm_types.h"
 
-typedef struct
+//runs through the FSM
+typedef struct FSMRunner
 {
 	FSMState *cur_state;
 	int has_output;
@@ -11,6 +12,7 @@ typedef struct
 } FSMRunner;
 
 void FSMRunner_Init(FSMRunner *runner);
+void FSMRunner_Reset(FSMRunner *runner);
 int FSMRunner_ApplyInput(FSMRunner *runner, FSMInput new_input);
 
 #endif

@@ -18,6 +18,7 @@
 void MorseReader_Init(void);
 void MorseReader_Reset(void);
 void MorseReader_TestRun(void);
+void MorseReader_FSMRun(void);
 static void MorseReader_UpdateLED(void);
 static void MorseReader_RegisterInput(int input_type);
 static void MorseReader_HandlePushbutton(void);

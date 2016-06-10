@@ -3,6 +3,11 @@
 
 void FSMRunner_Init(FSMRunner *runner)
 {
+	FSMRunner_Reset(runner);
+}
+
+void FSMRunner_Reset(FSMRunner *runner)
+{
 	runner->cur_state = FSM_GetState(0); //start at the initial state
 	runner->has_output = 0;
 }

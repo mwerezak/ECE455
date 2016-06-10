@@ -22,17 +22,23 @@ int main()
 	CreateMorseFSM();
 
 	MorseReader_Init();
-	MorseReader_TestRun();
+	MorseReader_FSMRun();
 
 	return 0;
 }
 
 
-//Label the possible inputs for readability
-#define DOT  0
-#define DASH 1
+//Relabel the possible inputs for readability
+#define DOT  FSM_DOT
+#define DASH FSM_DASH
 static int CreateMorseFSM(void)
 {
+	FSMInput INIT[7] = {DOT, DASH, DASH, DOT, DASH, DOT, DOT};
+	FSM_CreateInputSequence("CORRECT", 7, CORRECT);
+
+	/*
+	//Example alternate configuration: Actual Morse code
+
 	FSMInput A[2] = {DOT, DASH};
 	FSMInput B[4] = {DASH, DOT, DOT, DOT};
 	FSMInput C[4] = {DASH, DOT, DASH, DOT};
@@ -44,6 +50,7 @@ static int CreateMorseFSM(void)
 	FSM_CreateInputSequence("C", 4, C);
 	FSM_CreateInputSequence("D", 3, D);
 	FSM_CreateInputSequence("E", 1, E);
+	*/
 
 	return 0;
 }
