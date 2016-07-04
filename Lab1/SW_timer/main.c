@@ -16,10 +16,10 @@
 #define SOFTWARE_DELAY_CALIBRATION 1.40
 void software_delay(unsigned long delay_ms)
 {
-	//SystemCoreClock is cycles per second
-	//cycles per ms is SystemCoreClock/1000
-	//cycles per N ms is N*SystemCoreClock/1000
-	const double numiter = SystemCoreClock*delay_ms/1000*SOFTWARE_DELAY_CALIBRATION;
+	//SystemFrequency is cycles per second
+	//cycles per ms is SystemFrequency/1000
+	//cycles per N ms is N*SystemFrequency/1000
+	const double numiter = SystemFrequency*delay_ms/1000*SOFTWARE_DELAY_CALIBRATION;
 	int i;
 
 	__disable_irq(); //Disable interrupts

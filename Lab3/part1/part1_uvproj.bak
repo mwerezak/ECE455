@@ -409,17 +409,42 @@
             <File>
               <FileName>GLCD.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\mcb1700_ece\GLCD.h</FilePath>
+              <FilePath>..\mcb1700_ece\GLCD.h</FilePath>
             </File>
             <File>
               <FileName>GLCD_SPI_LPC1700.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\mcb1700_ece\GLCD_SPI_LPC1700.c</FilePath>
+              <FilePath>..\mcb1700_ece\GLCD_SPI_LPC1700.c</FilePath>
             </File>
             <File>
               <FileName>system_LPC17xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\mcb1700_ece\system_LPC17xx.c</FilePath>
+              <FilePath>..\mcb1700_ece\system_LPC17xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>common</GroupName>
+          <Files>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>pushbutton.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\pushbutton.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>debouncetest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\debouncetest.c</FilePath>
             </File>
           </Files>
         </Group>

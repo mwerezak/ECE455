@@ -17,7 +17,7 @@ Section Cross References
     startup_lpc17xx.o(.text) refers to startup_lpc17xx.o(STACK) for Stack_Mem
     glcd_spi_lpc1700.o(.text) refers to glcd_spi_lpc1700.o(.data) for driverCode
     glcd_spi_lpc1700.o(.text) refers to glcd_spi_lpc1700.o(.constdata) for Font_6x8_h
-    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
+    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for SystemFrequency
     main.o(.text) refers to _printf_pad.o(.text) for _printf_pre_padding
     main.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     main.o(.text) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
@@ -25,7 +25,7 @@ Section Cross References
     main.o(.text) refers to noretval__2snprintf.o(.text) for __2snprintf
     main.o(.text) refers to glcd_spi_lpc1700.o(.text) for GLCD_DisplayString
     main.o(.text) refers to system_lpc17xx.o(.text) for SystemInit
-    main.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
+    main.o(.text) refers to system_lpc17xx.o(.data) for SystemFrequency
     main.o(.text) refers to main.o(.data) for updateClock
     __2snprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
     __2snprintf.o(.text) refers to _sputc.o(.text) for _sputc
@@ -531,7 +531,7 @@ Image Symbol Table
     Font_16x24_h                             0x00001418   Data        5376  glcd_spi_lpc1700.o(.constdata)
     Region$$Table$$Base                      0x0000292c   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x0000294c   Number         0  anon$$obj.o(Region$$Table)
-    SystemCoreClock                          0x10000008   Data           4  system_lpc17xx.o(.data)
+    SystemFrequency                          0x10000008   Data           4  system_lpc17xx.o(.data)
     elapsed_secs                             0x1000000c   Data           4  main.o(.data)
     updateClock                              0x10000010   Data           4  main.o(.data)
     __libspace_start                         0x10000014   Data          96  libspace.o(.bss)

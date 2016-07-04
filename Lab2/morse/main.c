@@ -4,6 +4,7 @@
 #include "../common/led.h"
 #include "../common/pushbutton.h"
 #include "../common/morsereader.h"
+#include "../common/timer.h"
 #include "../fsm/fsm.h"
 
 int CreateMorseFSM(void);
@@ -16,7 +17,7 @@ int main()
 
 	LED_Init();
 	Pushbutton_Init();
-	Timer_Init();
+	Timer_Init(LPC_TIM0);
 
 	FSM_Init();
 	CreateMorseFSM();

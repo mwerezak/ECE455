@@ -5,16 +5,19 @@
 ### List of Objects: adding '"main.o"'
 ### List of Objects: adding '"glcd_spi_lpc1700.o"'
 ### List of Objects: adding '"system_lpc17xx.o"'
+### List of Objects: adding '"led.o"'
+### List of Objects: adding '"pushbutton.o"'
+### List of Objects: adding '"timer.o"'
+### List of Objects: adding '"debouncetest.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 "startup_lpc17xx.o" "main.o" "glcd_spi_lpc1700.o" "system_lpc17xx.o" 
---strict --scatter "part1.sct" 
---summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--cpu Cortex-M3 "startup_lpc17xx.o" "main.o" "glcd_spi_lpc1700.o" "system_lpc17xx.o" "led.o" "pushbutton.o" "timer.o" "debouncetest.o" --strict --scatter "part1.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
- --list ".\part1.map" -o part1.axf### Preparing Environment (PrepEnvAds)
+ --list ".\part1.map" -o "part1.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: 'part1.axf'
 ### ADS-LD Command File: 'part1.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'part1.lnp', Handle=0x00000710
+### Creating CmdFile 'part1.lnp', Handle=0x000006D8
 ### Writing '.lnp' file
 ### ADS-LD Command file 'part1.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
