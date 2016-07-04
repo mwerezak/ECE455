@@ -14,6 +14,12 @@ void Debounce_Init(LPC_TIMER *debounce_timer, DebouncedInputHandler input_handle
 	_handler = input_handler;
 }
 
+void Debounce_Reset(void)
+{
+	_debouncing = DEBOUNCE_READY;
+	Timer_Reset(_timer);
+}
+
 static void Debounce_HandlePushbutton(void)
 {
 	int timer_ticks = Timer_GetTicks(_timer);
@@ -31,12 +37,14 @@ static void Debounce_HandlePushbutton(void)
 	}
 	else if(_debouncing == DEBOUNCE_PRESSED)
 	{
-		if(timer_ticks > DEBOUNCE_DELAY && !pb_pressed)
+		if(timer_ticks > DEBOUNCE_DELAY)
 		{
-			_handler(INPUT_RAISED);
+			if(!pb_pressed)
+			{
+				_handler(INPUT_RAISED);
+			}
 
-			_debouncing = DEBOUNCE_READY;
-			Timer_Reset(_timer);
+			Debounce_Reset();
 		}
 	}
 }

@@ -3,7 +3,7 @@
 
 #include <lpc17xx.h>
 
-#define TIM0_FREQUENCY (SystemFrequency/4)
+#define TIMER_FREQUENCY (SystemFrequency/4)
 
 typedef LPC_TIM_TypeDef LPC_TIMER;
 

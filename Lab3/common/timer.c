@@ -6,7 +6,7 @@
 void Timer_Init(LPC_TIMER *timer)
 {
 	Timer_Reset(timer);
-	timer->PR = TIM0_FREQUENCY/1000; //tick milliseconds
+	timer->PR = TIMER_FREQUENCY/1000; //tick milliseconds
 }
 
 void Timer_EnableInterrupts(int enable_mask)

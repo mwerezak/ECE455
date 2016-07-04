@@ -17,6 +17,7 @@ typedef void (*DebouncedInputHandler)(int input_event);
 #define DEBOUNCE_ENABLE
 
 void Debounce_Init(LPC_TIMER *debounce_timer, DebouncedInputHandler input_handler);
+void Debounce_Reset(void);
 static void Debounce_HandlePushbutton(void);
 
 #endif

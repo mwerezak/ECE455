@@ -446,6 +446,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\debouncetest.c</FilePath>
             </File>
+            <File>
+              <FileName>debounce.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\debounce.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
