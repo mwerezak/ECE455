@@ -1,4 +1,4 @@
-*** Creating Trace Output File 'part1.tra' Ok.
+*** Creating Trace Output File 'strict.tra' Ok.
 ### Preparing for ADS-LD.
 ### Creating ADS-LD Command Line
 ### List of Objects: adding '"startup_lpc17xx.o"'
@@ -9,17 +9,18 @@
 ### List of Objects: adding '"pushbutton.o"'
 ### List of Objects: adding '"timer.o"'
 ### List of Objects: adding '"debouncetest.o"'
+### List of Objects: adding '"debounce.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 "startup_lpc17xx.o" "main.o" "glcd_spi_lpc1700.o" "system_lpc17xx.o" "led.o" "pushbutton.o" "timer.o" "debouncetest.o" --strict --scatter "part1.sct" 
+--cpu Cortex-M3 "startup_lpc17xx.o" "main.o" "glcd_spi_lpc1700.o" "system_lpc17xx.o" "led.o" "pushbutton.o" "timer.o" "debouncetest.o" "debounce.o" --strict --scatter "strict.sct" 
 --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
- --list ".\part1.map" -o "part1.axf"### Preparing Environment (PrepEnvAds)
-### ADS-LD Output File: 'part1.axf'
-### ADS-LD Command File: 'part1.lnp'
+ --list ".\strict.map" -o "strict.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'strict.axf'
+### ADS-LD Command File: 'strict.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'part1.lnp', Handle=0x00000520
+### Creating CmdFile 'strict.lnp', Handle=0x000004BC
 ### Writing '.lnp' file
-### ADS-LD Command file 'part1.lnp' is ready.
+### ADS-LD Command file 'strict.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
 ### ADS-LD: executed with 0 errors
 ### Updating obj list

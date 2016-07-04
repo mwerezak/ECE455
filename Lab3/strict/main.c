@@ -4,15 +4,14 @@
 #include "../common/led.h"
 #include "../common/timer.h"
 #include "../common/pushbutton.h"
+#include "../common/debounce.h"
 #include "../common/debouncetest.h"
 
 #include <stdio.h>
 
-#define STRICT_TIMEOUT
+#define STRICT_TIMEOUT 5000
 
 int ignored_count;
-
-int _stop = 0;
 
 int main(void)
 {
@@ -23,7 +22,29 @@ int main(void)
 	LED_Init();
 	Pushbutton_Init();
 	Timer_Init(LPC_TIM0);
+	Timer_EnableInterrupts(0x1);
+
+	Debounce_Init(LPC_TIM0, &DebounceTest_Handler);
+	DebounceTest_Run();
+
+	while(1);
+
+}
+
+
+#ifdef TIMER_TEST
+int _stop = 0;
+int main(void)
+{
+	SystemInit();
+	GLCD_Init();
+	GLCD_Clear(White);
+
+	LED_Init();
+	Pushbutton_Init();
+	Timer_Init(LPC_TIM0);
 	Timer_Init(LPC_TIM1);
+	Timer_EnableInterrupts(0x3);
 
 	LED_On(1);
 
@@ -65,24 +86,4 @@ void TIMER1_IRQHandler(void)
 	led_toggle = !led_toggle;
 	LED_Set(3, led_toggle);
 }
-
-/*
-void GLCD_Init(void);
-void GLCD_SetTextColor(unsigned short color);
-void GLCD_SetBackColor(unsigned short color);
-void GLCD_DisplayChar(unsigned int row, unsigned int column,
-unsigned char font, unsigned char c);
-void GLCD_DisplayString(unsigned int row, unsigned int column,
-unsigned char font, unsigned char *s);
-void GLCD_Clear(unsigned short color);
-void GLCD_ClearLn(unsigned int row, unsigned char font);
-void GLCD_PutPixel(x, y); // uses current foreground (text) colour
-void GLCD_Bitmap(unsigned int x, unsigned int y,
-unsigned int w, unsigned int h, unsigned char *bitmap);
-void GLCD_ScrollVertical(unsigned int delta_y);
-
-The colors can be the
-predefined constants Black, Navy, DarkGreen, DarkCyan, Maroon, Purple, Olive, LightGrey,
-DarkGrey, Blue, Green, Cyan, Red, Magenta, Yellow and White, or any RGB value packed into
-16 bits in 5:6:5 format (i.e. red in bits 15:11, green in bits 10:5 and blue in bits 4:0).
-*/
+#endif

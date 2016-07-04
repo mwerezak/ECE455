@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>part1</OutputName>
+          <OutputName>strict</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -440,6 +440,11 @@
               <FileName>debouncetest.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\debouncetest.c</FilePath>
+            </File>
+            <File>
+              <FileName>debounce.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\debounce.c</FilePath>
             </File>
           </Files>
         </Group>

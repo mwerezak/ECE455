@@ -328,6 +328,20 @@
       <PathWithFileName>..\common\debouncetest.c</PathWithFileName>
       <FilenameWithoutPath>debouncetest.c</FilenameWithoutPath>
     </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\common\debounce.c</PathWithFileName>
+      <FilenameWithoutPath>debounce.c</FilenameWithoutPath>
+    </File>
   </Group>
 
 </ProjectOpt>
