@@ -25,4 +25,3 @@ int Pushbutton_ReadValue(void)
 	return ~(LPC_GPIO2->FIOPIN >> 10) & 0x01;
 }
 
-

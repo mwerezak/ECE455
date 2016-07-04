@@ -3,8 +3,12 @@
 
 #include "../common/led.h"
 #include "../common/timer.h"
-//#include "../common/pushbutton.h"
-//#include "../common/debouncetest.h"
+#include "../common/pushbutton.h"
+#include "../common/debouncetest.h"
+
+#include <stdio.h>
+
+int _go = 1;
 
 int main(void)
 {
@@ -13,29 +17,29 @@ int main(void)
 	GLCD_Clear(White);
 
 	LED_Init();
-	//Pushbutton_Init();
+	Pushbutton_Init();
 	Timer_Init(LPC_TIM0);
 
-
-	LPC_PINCON->PINSEL4 &= ~(3<<20); // P2.10 is GPIO
-	LPC_GPIO2->FIODIR &= ~(1<<10); // P2.10 is input
-
-	LPC_GPIOINT->IO2IntEnF |= 1 << 10; // falling edge of P2.10
-	NVIC_EnableIRQ(EINT3_IRQn);
-
 	LED_On(1);
+
+	Timer_Start(LPC_TIM0);
+	while(_go)
+	{
+		unsigned char strbuf[20];
+		snprintf((char*)strbuf, 20, "%d", Timer_GetTicks(LPC_TIM0));
+		GLCD_DisplayString(1, 0, 1, strbuf);
+	}
 
 	return 0;
 }
 
 void EINT3_IRQHandler(void)
 {
-	//Pushbutton_ClearInterrupt();
-	LPC_GPIOINT->IO2IntClr |= 1 << 10; // clear interrupt condition
+	Pushbutton_ClearInterrupt();
+	_go = 0;
 
 	LED_On(0);
 }
-
 
 /*
 void GLCD_Init(void);
