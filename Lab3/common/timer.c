@@ -7,9 +7,22 @@ void Timer_Init(LPC_TIMER *timer)
 {
 	Timer_Reset(timer);
 	timer->PR = TIM0_FREQUENCY/1000; //tick milliseconds
+}
 
-	NVIC_EnableIRQ(TIMER0_IRQn);
-	NVIC_EnableIRQ(TIMER1_IRQn);
+void Timer_EnableInterrupts(int enable_mask)
+{
+	const int num_timers = 4;
+	IRQn_Type timer_IRQn[] = { TIMER0_IRQn, TIMER1_IRQn, TIMER2_IRQn, TIMER3_IRQn };
+	int n;
+
+	for(n = 0; n < num_timers; n++)
+	{
+		if(enable_mask & (1 << n))
+		{
+			NVIC_EnableIRQ(timer_IRQn[n]);
+		}
+	}
+
 }
 
 void Timer_Start(LPC_TIMER *timer)

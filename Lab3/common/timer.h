@@ -10,6 +10,7 @@ typedef LPC_TIM_TypeDef LPC_TIMER;
 //*** Timer
 
 void Timer_Init(LPC_TIMER *timer);
+void Timer_EnableInterrupts(int enable_mask);
 
 void Timer_Start(LPC_TIMER *timer);
 void Timer_SetTimeout(LPC_TIMER *timer, int timeout);
