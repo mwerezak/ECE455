@@ -1,0 +1,4 @@
+--cpu Cortex-M3 ".\output\startup_mps_cm3.o" ".\output\main.o" ".\output\tasks.o" ".\output\list.o" ".\output\queue.o" ".\output\port.o" ".\output\heap_1.o" --library_type=microlib --strict --scatter ".\Output\edf_scheduler.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\edf_scheduler.map" -o ".\Output\edf_scheduler.axf"
