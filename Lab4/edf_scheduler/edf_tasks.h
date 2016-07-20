@@ -4,7 +4,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-#define UNINTERRUPTIBLE_TIME 10 //duration in ms of each uninterruptible "unit" of work
+#define UNINTERRUPTIBLE_TIME 100 //duration in ms of each uninterruptible "unit" of work
 
 #define NUM_TASKS 3
 
@@ -22,7 +22,6 @@ typedef struct
 
 	xTaskHandle handle;
 	Tick last_deadline;
-	TaskPriority priority;
 } TaskInfo;
 
 void CreateTask(TaskID id, char *name, int exec_time, int period);
@@ -30,6 +29,7 @@ void InitTask( void *pvParameters );
 
 static void RunTask( void *pvParameters );
 static void UpdatePriorities(void);
+static int CheckDeadline(TaskInfo *task);
 static __inline Tick NextDeadline(TaskInfo *task);
 static __inline void DoWork(void);
 

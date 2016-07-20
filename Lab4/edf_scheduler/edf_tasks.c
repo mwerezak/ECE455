@@ -24,6 +24,15 @@ void CreateTask(TaskID id, char *name, int exec_time, int period)
 //special task used to do initialization
 void InitTask( void *pvParameters )
 {
+	int i;
+	Tick init_time = xTaskGetTickCount();
+
+	//init last deadline
+	for(i = 0; i < _active_tasks; i++)
+	{
+		_tasks_store[i].last_deadline = init_time;
+	}
+
 	UpdatePriorities();
 	vTaskDelete(NULL); //delete ourselves
 }
@@ -44,8 +53,7 @@ static void UpdatePriorities(void)
 	//then sort it according to the amount of time left
 	do
 	{
-		sorted = 1; //bubble sort lol
-
+		sorted = 1;
 		for(i = 1; i < _active_tasks; i++)
 		{
 			//sort so that the task with the earliest deadline is last
@@ -58,7 +66,7 @@ static void UpdatePriorities(void)
 			}
 		}
 	}
-	while(!sorted);
+	while(!sorted); //bubble sort lol
 
 	//now set priorities, first task in the sorted array should have least priority
 	for(i = 0; i < _active_tasks; i++)
@@ -69,15 +77,55 @@ static void UpdatePriorities(void)
 
 static void RunTask( void *pvParameters )
 {
+	int i, work_done;
+	int missed;
 	TaskInfo *this = (TaskInfo *) pvParameters;
 	Tick last_wake_time = xTaskGetTickCount();
 
-	this->last_deadline = last_wake_time;
-
 	while(1)
 	{
-		vTaskDelayUntil( &last_wake_time, MILLISECONDS(this->deadline_period) );
+		//start doing work
+		work_done = 0;
+		while(work_done < this->work_required)
+		{
+			DoWork();
+			work_done++;
+
+			//check deadlines for every task
+			missed = 0;
+			for(i = 0; i < _active_tasks; i++)
+			{
+				missed += CheckDeadline(&_tasks_store[i]);
+			}
+			if(missed > 0)
+			{
+				UpdatePriorities(); //if any of them missed, re-evaluate priorities
+			}
+		}
+
+		this->last_deadline = NextDeadline(this); //set the deadline for the next period of work
+		UpdatePriorities(); //re-evaluate priorities
+
+		//sleep until the next period
+		last_wake_time = this->last_deadline;
+		vTaskDelayUntil( &last_wake_time, 0 );
 	}
+}
+
+//Ensures that a task's deadline isn't in the past
+static int CheckDeadline(TaskInfo *task)
+{
+	int missed = 0;
+	Tick curtime = xTaskGetTickCount();
+
+	while(curtime > NextDeadline(task))
+	{
+		missed++;
+		task->last_deadline = NextDeadline(task);
+	}
+
+	task->missed_count += missed;
+	return missed;
 }
 
 static __inline Tick NextDeadline(TaskInfo *task)
@@ -93,7 +141,7 @@ static __inline void DoWork(void)
 
 	taskENTER_CRITICAL();
 
-	for(i = 0; i < UNINTERRUPTIBLE_TIME*configCPU_CLOCK_HZ/1000; i++);
+	for(i = 0; i < UNINTERRUPTIBLE_TIME/7*configCPU_CLOCK_HZ/1000; i++);
 
 	taskEXIT_CRITICAL();
 }
