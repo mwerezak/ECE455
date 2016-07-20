@@ -17,7 +17,7 @@
 ### ADS-LD Output File: '.\Output\edf_scheduler.axf'
 ### ADS-LD Command File: '.\Output\edf_scheduler.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Output\edf_scheduler.lnp', Handle=0x00000998
+### Creating CmdFile '.\Output\edf_scheduler.lnp', Handle=0x00000A04
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Output\edf_scheduler.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

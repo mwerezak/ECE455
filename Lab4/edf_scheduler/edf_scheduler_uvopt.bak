@@ -141,9 +141,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>36</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>658</Address>
+          <LineNumber>72</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>618</Address>
           <ByteObject>0</ByteObject>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
@@ -151,9 +151,21 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename></Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\edf_scheduler\edf_tasks\36</Expression>
+          <Expression>\\edf_scheduler\edf_tasks\72</Expression>
         </Bp>
       </Breakpoint>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>_</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>_tasks_store</ItemText>
+        </Ww>
+      </WatchWindow1>
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
@@ -171,7 +183,7 @@
         <AscS3>0</AscS3>
         <aSer3>0</aSer3>
         <eProf>0</eProf>
-        <aLa>1</aLa>
+        <aLa>0</aLa>
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
@@ -234,10 +246,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>11</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>31</TopLine>
-      <CurrentLine>53</CurrentLine>
+      <TopLine>36</TopLine>
+      <CurrentLine>37</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -262,10 +274,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>87</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <CurrentLine>7</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\edf_tasks.c</PathWithFileName>
       <FilenameWithoutPath>edf_tasks.c</FilenameWithoutPath>
@@ -283,10 +295,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>77</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>2199</TopLine>
-      <CurrentLine>2203</CurrentLine>
+      <TopLine>1347</TopLine>
+      <CurrentLine>1359</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\FreeRTOS-Source\tasks.c</PathWithFileName>
       <FilenameWithoutPath>tasks.c</FilenameWithoutPath>
@@ -354,19 +366,13 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>3</ActiveTab>
+      <ActiveTab>2</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\main.c</Name>
-          <ColumnNumber>11</ColumnNumber>
-          <TopLine>31</TopLine>
-          <CurrentLine>53</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\edf_tasks.c</Name>
           <ColumnNumber>0</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>1</CurrentLine>
+          <TopLine>36</TopLine>
+          <CurrentLine>37</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\FreeRTOS-Source\portable\RVDS\ARM_CM3\port.c</Name>
@@ -375,16 +381,16 @@
           <CurrentLine>258</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\FreeRTOS-Source\tasks.c</Name>
-          <ColumnNumber>77</ColumnNumber>
-          <TopLine>2199</TopLine>
-          <CurrentLine>2203</CurrentLine>
+          <Name>.\edf_tasks.c</Name>
+          <ColumnNumber>87</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>7</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\startup_MPS_CM3.s</Name>
-          <ColumnNumber>15</ColumnNumber>
-          <TopLine>121</TopLine>
-          <CurrentLine>126</CurrentLine>
+          <Name>.\FreeRTOS-Source\tasks.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1347</TopLine>
+          <CurrentLine>1359</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

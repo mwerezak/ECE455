@@ -1,0 +1,165 @@
+[Signal 1]
+DispName=ulTaskNumber[0]
+PlotType=1
+Color=255
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=1.
+Mask=1
+Offset=0
+[Signal 2]
+DispName=ulTaskNumber[1]
+PlotType=1
+Color=32768
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=1.
+Mask=1
+Offset=0
+[Signal 3]
+DispName=ulTaskNumber[2]
+PlotType=1
+Color=8388608
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=1.
+Mask=1
+Offset=0
+[Signal 4]
+DispName=_tasks_store[0].last_deadline
+PlotType=2
+Color=0
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=4294967295.
+Mask=0
+Offset=0
+[Signal 6]
+DispName=_tasks_store[2].last_deadline
+PlotType=2
+Color=8388608
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=4294967295.
+Mask=0
+Offset=0
+[Signal 7]
+DispName=_tasks_store[0].last_slack
+PlotType=2
+Color=0
+ValHex=0
+MinDec=0
+MinVal=2147483648.
+MaxDec=0
+MaxVal=2147483647.
+Mask=0
+Offset=0
+[Signal 8]
+DispName=_tasks_store[1].last_slack
+PlotType=2
+Color=255
+ValHex=0
+MinDec=0
+MinVal=2147483648.
+MaxDec=0
+MaxVal=2147483647.
+Mask=0
+Offset=0
+[Signal 9]
+DispName=_tasks_store[2].last_slack
+PlotType=2
+Color=10485760
+ValHex=0
+MinDec=0
+MinVal=2147483648.
+MaxDec=0
+MaxVal=2147483647.
+Mask=0
+Offset=0
+[Signal 10]
+DispName=_tasks_store[0].work_done
+PlotType=0
+Color=0
+ValHex=0
+MinDec=1
+MinVal=0.
+MaxDec=1
+MaxVal=100.
+Mask=0
+Offset=0
+[Signal 12]
+DispName=_tasks_store[2].work_done
+PlotType=0
+Color=8388608
+ValHex=0
+MinDec=1
+MinVal=0.
+MaxDec=1
+MaxVal=500.
+Mask=-1
+Offset=0
+[Signal 14]
+DispName=_tasks_store[1].priority
+PlotType=2
+Color=32768
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=4294967295.
+Mask=-1
+Offset=0
+[Signal 15]
+DispName=_tasks_store[2].priority
+PlotType=2
+Color=8388608
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=4294967295.
+Mask=-1
+Offset=0
+[Signal 5]
+DispName=_tasks_store[1].last_deadline
+PlotType=2
+Color=32768
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=4294967295.
+Mask=0
+Offset=0
+[Signal 11]
+DispName=_tasks_store[1].work_done
+PlotType=0
+Color=32768
+ValHex=0
+MinDec=1
+MinVal=0.
+MaxDec=1
+MaxVal=200.
+Mask=0
+Offset=0
+[Signal 13]
+DispName=_tasks_store[0].priority
+PlotType=2
+Color=255
+ValHex=0
+MinDec=0
+MinVal=0.
+MaxDec=0
+MaxVal=4294967295.
+Mask=-1
+Offset=0
