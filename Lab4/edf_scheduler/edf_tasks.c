@@ -12,9 +12,10 @@ void CreateTask(TaskID id, char *name, int exec_time, int period)
 
 	task->id = id;
 	task->deadline_period = period*1000;
-	task->work_required = exec_time*1000/UNINTERRUPTIBLE_TIME;
+	task->work_required = exec_time*1000/UNIT_OF_WORK_MS;
 	task->missed_count = 0;
 	task->last_deadline = 0;
+	task->last_slack = 0;
 
 	//create all tasks with priority 1 initially, the priority will be set later by the InitTask
 	xTaskCreate(RunTask, (const signed char *) name, configMINIMAL_STACK_SIZE, (void*) task, 1, &(task->handle));
@@ -66,66 +67,53 @@ static void UpdatePriorities(void)
 			}
 		}
 	}
-	while(!sorted); //bubble sort lol
+	while(!sorted); //bubble sort
 
 	//now set priorities, first task in the sorted array should have least priority
+	taskENTER_CRITICAL();
 	for(i = 0; i < _active_tasks; i++)
 	{
+		sorted_tasks[i]->priority = i+1;
 		vTaskPrioritySet(sorted_tasks[i]->handle, i+1);
 	}
+	taskEXIT_CRITICAL();
 }
 
 static void RunTask( void *pvParameters )
 {
-	int i, work_done;
-	int missed;
 	TaskInfo *this = (TaskInfo *) pvParameters;
 	Tick last_wake_time = xTaskGetTickCount();
+	Tick next_deadline;
 
 	while(1)
 	{
 		//start doing work
-		work_done = 0;
-		while(work_done < this->work_required)
+		this->work_done = 0;
+		next_deadline = NextDeadline(this);
+		while(this->work_done < this->work_required)
 		{
-			DoWork();
-			work_done++;
+			//since the system is EDF, we only need to check the current task
+			if(xTaskGetTickCount() >= next_deadline)
+			{
+				this->missed_count++;
+				break;
+			}
 
-			//check deadlines for every task
-			missed = 0;
-			for(i = 0; i < _active_tasks; i++)
-			{
-				missed += CheckDeadline(&_tasks_store[i]);
-			}
-			if(missed > 0)
-			{
-				UpdatePriorities(); //if any of them missed, re-evaluate priorities
-			}
+			//Do 1 unit of work
+			DoWork();
+			this->work_done++;
 		}
 
-		this->last_deadline = NextDeadline(this); //set the deadline for the next period of work
+		this->last_slack = next_deadline - xTaskGetTickCount();
+		this->last_deadline = next_deadline; //set the deadline for the next period of work
 		UpdatePriorities(); //re-evaluate priorities
 
 		//sleep until the next period
-		last_wake_time = this->last_deadline;
-		vTaskDelayUntil( &last_wake_time, 0 );
+		if(this->last_deadline > last_wake_time)
+		{
+			vTaskDelayUntil( &last_wake_time, this->last_deadline - last_wake_time );
+		}
 	}
-}
-
-//Ensures that a task's deadline isn't in the past
-static int CheckDeadline(TaskInfo *task)
-{
-	int missed = 0;
-	Tick curtime = xTaskGetTickCount();
-
-	while(curtime > NextDeadline(task))
-	{
-		missed++;
-		task->last_deadline = NextDeadline(task);
-	}
-
-	task->missed_count += missed;
-	return missed;
 }
 
 static __inline Tick NextDeadline(TaskInfo *task)
@@ -133,30 +121,8 @@ static __inline Tick NextDeadline(TaskInfo *task)
 	return task->last_deadline + TICKS(task->deadline_period);
 }
 
-
-//Do 1 unit of work, this takes a number of milliseconds equal to UNINTERRUPTIBLE_TIME
 static __inline void DoWork(void)
 {
 	int i;
-
-	taskENTER_CRITICAL();
-
-	for(i = 0; i < UNINTERRUPTIBLE_TIME/7*configCPU_CLOCK_HZ/1000; i++);
-
-	taskEXIT_CRITICAL();
+	for(i = 0; i < UNIT_OF_WORK_MS/7*configCPU_CLOCK_HZ/1000; i++);
 }
-
-/*
-	portTickType xNextWakeTime;
-
-	//Initialise xNextWakeTime - this only needs to be done once.
-	xNextWakeTime = xTaskGetTickCount();
-
-	for( ;; )
-	{
-		//Wake up every 150 ms and... do nothing!
-		vTaskDelayUntil( &xNextWakeTime, MILLISECONDS(150) );
-	}
-*/
-
-

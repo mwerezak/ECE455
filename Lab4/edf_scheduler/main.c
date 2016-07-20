@@ -17,12 +17,6 @@ the Keil simulator IDE. */
 /*-----------------------------------------------------------*/
 
 /*
- * The tasks
- */
-
-static void DoNothingTask( void *pvParameters );
-
-/*
  * Redirects the printf() output to the serial window in the Keil simulator
  * IDE.
  */
@@ -43,7 +37,7 @@ int main(void)
 {
 	CreateTask(0, "Task 0", 1, 4);
 	CreateTask(1, "Task 1", 2, 6);
-	CreateTask(2, "Task 2", 5, 13);
+	CreateTask(2, "Task 2", 5, 12);
 
 	xTaskCreate(InitTask, "Init", configMINIMAL_STACK_SIZE, NULL, 9, NULL); //create the init task
 
