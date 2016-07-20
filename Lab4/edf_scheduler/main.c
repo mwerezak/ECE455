@@ -2,6 +2,7 @@
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "task.h"
+#include "edf_tasks.h"
 
 /* Standard include. */
 #include <stdio.h>
@@ -13,13 +14,12 @@ the Keil simulator IDE. */
 #define mainDEMCR           (*((volatile unsigned long *)(0xE000EDFC)))
 #define mainTRCENA          0x01000000
 
-#define MILLISECONDS(ms) (ms / portTICK_RATE_MS) //converts ms to ticks
-
 /*-----------------------------------------------------------*/
 
 /*
  * The tasks
  */
+
 static void DoNothingTask( void *pvParameters );
 
 /*
@@ -42,8 +42,11 @@ unsigned long ulTaskNumber[ configEXPECTED_NO_RUNNING_TASKS ];
 int main(void)
 {
 	/* Start some tasks */
-	xTaskCreate( DoNothingTask, (char *) "Dummy", configMINIMAL_STACK_SIZE, NULL, 1, NULL );
-	xTaskCreate( DoNothingTask, (char *) "Dummy", configMINIMAL_STACK_SIZE, NULL, 2, NULL );
+	//xTaskCreate( DoNothingTask, (char *) "Dummy", configMINIMAL_STACK_SIZE, NULL, 1, NULL );
+	//xTaskCreate( DoNothingTask, (char *) "Dummy", configMINIMAL_STACK_SIZE, NULL, 2, NULL );
+	CreateTask(0, "Task 0", 1, 4);
+	CreateTask(1, "Task 1", 2, 6);
+	CreateTask(2, "Task 2", 5, 12);
 
 	/* Start the tasks running. */
 	vTaskStartScheduler();
@@ -64,11 +67,8 @@ static void DoNothingTask( void *pvParameters )
 
 	for( ;; )
 	{
-		/* Place this task in the blocked state until it is time to run again.
-		The block time is specified in ticks, the constant used converts ticks
-		to ms.  While in the Blocked state this task will not consume any CPU
-		time. */
-		vTaskDelayUntil( &xNextWakeTime, MILLISECONDS(150) ); //delay or something, idk
+		//Wake up every 150 ms and... do nothing!
+		vTaskDelayUntil( &xNextWakeTime, MILLISECONDS(150) );
 	}
 }
 

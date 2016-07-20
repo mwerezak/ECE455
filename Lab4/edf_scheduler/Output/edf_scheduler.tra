@@ -3,20 +3,21 @@
 ### Creating ADS-LD Command Line
 ### List of Objects: adding '".\output\startup_mps_cm3.o"'
 ### List of Objects: adding '".\output\main.o"'
+### List of Objects: adding '".\output\edf_tasks.o"'
 ### List of Objects: adding '".\output\tasks.o"'
 ### List of Objects: adding '".\output\list.o"'
 ### List of Objects: adding '".\output\queue.o"'
 ### List of Objects: adding '".\output\port.o"'
 ### List of Objects: adding '".\output\heap_1.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 ".\output\startup_mps_cm3.o" ".\output\main.o" ".\output\tasks.o" ".\output\list.o" ".\output\queue.o" ".\output\port.o" ".\output\heap_1.o" --library_type=microlib --strict --scatter ".\Output\edf_scheduler.sct" 
+--cpu Cortex-M3 ".\output\startup_mps_cm3.o" ".\output\main.o" ".\output\edf_tasks.o" ".\output\tasks.o" ".\output\list.o" ".\output\queue.o" ".\output\port.o" ".\output\heap_1.o" --library_type=microlib --strict --scatter ".\Output\edf_scheduler.sct" 
 --autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\edf_scheduler.map" -o ".\Output\edf_scheduler.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: '.\Output\edf_scheduler.axf'
 ### ADS-LD Command File: '.\Output\edf_scheduler.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Output\edf_scheduler.lnp', Handle=0x0000082C
+### Creating CmdFile '.\Output\edf_scheduler.lnp', Handle=0x00000980
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Output\edf_scheduler.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

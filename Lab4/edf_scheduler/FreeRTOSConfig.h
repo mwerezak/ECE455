@@ -66,6 +66,10 @@
  * See http://www.freertos.org/a00110.html.
  *----------------------------------------------------------*/
 
+//Timing conversions
+#define MILLISECONDS(ms) (ms / portTICK_RATE_MS)
+#define TICKS(ticks) (ticks * portTICK_RATE_MS)
+
 #define configUSE_PREEMPTION			1
 #define configUSE_IDLE_HOOK				0
 #define configUSE_TICK_HOOK				0
@@ -82,15 +86,15 @@
 #define configUSE_RECURSIVE_MUTEXES		0
 #define configCHECK_FOR_STACK_OVERFLOW	0
 
-#define configMAX_PRIORITIES			( 5 )
+#define configMAX_PRIORITIES			( 4 )
 #define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
 #define configQUEUE_REGISTRY_SIZE		0
 
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
 
-#define INCLUDE_vTaskPrioritySet			0
-#define INCLUDE_uxTaskPriorityGet			0
+#define INCLUDE_vTaskPrioritySet			1
+#define INCLUDE_uxTaskPriorityGet			1
 #define INCLUDE_vTaskDelete					0
 #define INCLUDE_vTaskCleanUpResources		0
 #define INCLUDE_vTaskSuspend				0
@@ -109,7 +113,7 @@ This demo is expected to create three tasks - an Rx task, a Tx task and the
 idle task.  This constant is used to dimension an array which is used to trace
 which task is running when for viewing on the logic analyzer window in the Keil
 simulator IDE. */
-#define configEXPECTED_NO_RUNNING_TASKS		( 3 )
+#define configEXPECTED_NO_RUNNING_TASKS		( 4 )
 extern unsigned long ulTaskNumber[];
 #define traceTASK_SWITCHED_IN() 	ulTaskNumber[ pxCurrentTCB->uxTCBNumber ] = 1
 #define traceTASK_SWITCHED_OUT() 	ulTaskNumber[ pxCurrentTCB->uxTCBNumber ] = 0

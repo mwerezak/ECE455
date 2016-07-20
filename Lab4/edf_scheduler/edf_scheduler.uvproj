@@ -406,6 +406,11 @@
               <FileType>5</FileType>
               <FilePath>.\FreeRTOSConfig.h</FilePath>
             </File>
+            <File>
+              <FileName>edf_tasks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\edf_tasks.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
