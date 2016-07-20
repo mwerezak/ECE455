@@ -86,7 +86,7 @@
 #define configUSE_RECURSIVE_MUTEXES		0
 #define configCHECK_FOR_STACK_OVERFLOW	0
 
-#define configMAX_PRIORITIES			( 4 )
+#define configMAX_PRIORITIES			( 10 )
 #define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
 #define configQUEUE_REGISTRY_SIZE		0
 
@@ -94,12 +94,12 @@
 to exclude the API function. */
 
 #define INCLUDE_vTaskPrioritySet			1
-#define INCLUDE_uxTaskPriorityGet			1
-#define INCLUDE_vTaskDelete					0
+#define INCLUDE_uxTaskPriorityGet			0
+#define INCLUDE_vTaskDelete					1
 #define INCLUDE_vTaskCleanUpResources		0
 #define INCLUDE_vTaskSuspend				0
 #define INCLUDE_vTaskDelayUntil				1
-#define INCLUDE_vTaskDelay					1
+#define INCLUDE_vTaskDelay					0
 #define INCLUDE_uxTaskGetStackHighWaterMark	0
 
 #define configKERNEL_INTERRUPT_PRIORITY 		( 7 << 5 )	/* Priority 7, or 255 as only the top three bits are implemented.  This is the lowest priority. */

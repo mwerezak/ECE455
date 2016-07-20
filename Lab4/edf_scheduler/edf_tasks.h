@@ -13,7 +13,7 @@ typedef unsigned portBASE_TYPE TaskPriority;
 
 typedef unsigned int TaskID;
 
-typedef struct TaskInfo
+typedef struct
 {
 	TaskID id;
 	int deadline_period; //ms
@@ -22,11 +22,15 @@ typedef struct TaskInfo
 
 	xTaskHandle handle;
 	Tick last_deadline;
+	TaskPriority priority;
 } TaskInfo;
 
 void CreateTask(TaskID id, char *name, int exec_time, int period);
+void InitTask( void *pvParameters );
 
-static __inline void DoWork(void);
 static void RunTask( void *pvParameters );
+static void UpdatePriorities(void);
+static __inline Tick NextDeadline(TaskInfo *task);
+static __inline void DoWork(void);
 
 #endif

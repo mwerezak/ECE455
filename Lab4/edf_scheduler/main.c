@@ -41,12 +41,11 @@ unsigned long ulTaskNumber[ configEXPECTED_NO_RUNNING_TASKS ];
 
 int main(void)
 {
-	/* Start some tasks */
-	//xTaskCreate( DoNothingTask, (char *) "Dummy", configMINIMAL_STACK_SIZE, NULL, 1, NULL );
-	//xTaskCreate( DoNothingTask, (char *) "Dummy", configMINIMAL_STACK_SIZE, NULL, 2, NULL );
 	CreateTask(0, "Task 0", 1, 4);
 	CreateTask(1, "Task 1", 2, 6);
 	CreateTask(2, "Task 2", 5, 12);
+
+	xTaskCreate(InitTask, "Init", configMINIMAL_STACK_SIZE, NULL, 9, NULL); //create the init task
 
 	/* Start the tasks running. */
 	vTaskStartScheduler();
@@ -56,22 +55,6 @@ int main(void)
 	heap available for the idle task to be created. */
 	for( ;; );
 }
-/*-----------------------------------------------------------*/
-
-static void DoNothingTask( void *pvParameters )
-{
-	portTickType xNextWakeTime;
-
-	/* Initialise xNextWakeTime - this only needs to be done once. */
-	xNextWakeTime = xTaskGetTickCount();
-
-	for( ;; )
-	{
-		//Wake up every 150 ms and... do nothing!
-		vTaskDelayUntil( &xNextWakeTime, MILLISECONDS(150) );
-	}
-}
-
 /*-----------------------------------------------------------*/
 
 int fputc( int iChar, FILE *pxNotUsed ) 
