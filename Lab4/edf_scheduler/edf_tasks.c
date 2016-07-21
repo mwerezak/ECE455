@@ -6,36 +6,46 @@ static int _active_tasks = 0;
 static TaskInfo _tasks_store[NUM_TASKS]; //where all the task info is stored
 
 //exec_time, period is in seconds
-void CreateTask(TaskID id, char *name, int exec_time, int period)
+void CreateTask(char *name, int exec_time, int period)
 {
+	TaskID id = _active_tasks++;
+
 	TaskInfo *task = &_tasks_store[id];
 
 	task->id = id;
 	task->deadline_period = period*1000;
-	task->work_required = exec_time*1000/UNIT_OF_WORK_MS;
+	task->work_required = exec_time*1000/WORK_PERIOD;
 	task->missed_count = 0;
 	task->last_deadline = 0;
 	task->last_slack = 0;
 
-	//create all tasks with priority 1 initially, the priority will be set later by the InitTask
+	task->deadline_period2 = task->deadline_period;
+
+	//create the task timer
+	task->timer = xTimerCreate((const signed char *) name, TICKS(WORK_PERIOD), pdFALSE, (void*) task, WorkDone);
+
+	//create tasks with priority 1 initially, the priority will be set later by the InitTask using UpdatePriorities()
 	xTaskCreate(RunTask, (const signed char *) name, configMINIMAL_STACK_SIZE, (void*) task, 1, &(task->handle));
-	_active_tasks++;
 }
 
 //special task used to do initialization
 void InitTask( void *pvParameters )
 {
 	int i;
-	Tick init_time = xTaskGetTickCount();
+	Tick init_time;
 
 	//init last deadline
+	init_time = xTaskGetTickCount();
 	for(i = 0; i < _active_tasks; i++)
 	{
 		_tasks_store[i].last_deadline = init_time;
 	}
 
+	//init all task priorities
 	UpdatePriorities();
-	vTaskDelete(NULL); //delete ourselves
+
+	//delete ourselves
+	vTaskDelete(NULL);
 }
 
 static void UpdatePriorities(void)
@@ -89,6 +99,7 @@ static void RunTask( void *pvParameters )
 	{
 		//start doing work
 		this->work_done = 0;
+		this->deadline_period = this->deadline_period2; //workaround for memory corruption issue caused by enabling timers
 		next_deadline = NextDeadline(this);
 		while(this->work_done < this->work_required)
 		{
@@ -100,8 +111,7 @@ static void RunTask( void *pvParameters )
 			}
 
 			//Do 1 unit of work
-			DoWork();
-			this->work_done++;
+			DoWork(this);
 		}
 
 		this->last_slack = next_deadline - xTaskGetTickCount();
@@ -121,8 +131,28 @@ static __inline Tick NextDeadline(TaskInfo *task)
 	return task->last_deadline + TICKS(task->deadline_period);
 }
 
-static __inline void DoWork(void)
+static __inline void DoWork(TaskInfo *task)
 {
-	int i;
-	for(i = 0; i < UNIT_OF_WORK_MS/7*configCPU_CLOCK_HZ/1000; i++);
+	//enter a critical section so that pre-emption does not leave 
+	//timers and the working variable in an inconsistent state
+	taskENTER_CRITICAL();
+	if(task->working)
+	{
+		xTimerReset(task->timer, TICKS(WORK_PERIOD)); //already working!
+	}
+	else
+	{
+		task->working = 1;
+		xTimerStart(task->timer, TICKS(WORK_PERIOD));
+	}
+
+	while(task->working); //block until the work is done
+	taskEXIT_CRITICAL();
+}
+
+static void WorkDone(xTimerHandle timer)
+{
+	TaskInfo *task = pvTimerGetTimerID(timer);
+	task->working = 0;
+	task->work_done++;
 }

@@ -3,8 +3,13 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
+#include "timers.h"
 
-#define UNIT_OF_WORK_MS 10 //duration in ms of each unit of work
+//Timing conversions
+#define TICKS(ms) (ms / portTICK_RATE_MS)
+#define MILLISECONDS(ticks) (ticks * portTICK_RATE_MS)
+
+#define WORK_PERIOD 10 //duration in ms of each unit of work
 
 #define NUM_TASKS 3
 
@@ -17,24 +22,28 @@ typedef struct
 {
 	TaskID id;
 	int deadline_period; //ms
+	int deadline_period2; //ms
 	int work_required; //work units
 	int missed_count; //number of missed deadlines
 
 	//for debugging
 	TaskPriority priority;
-	int work_done;
 	long last_slack;
 
 	xTaskHandle handle;
+	xTimerHandle timer;
 	Tick last_deadline;
+	int working;
+	int work_done;
 } TaskInfo;
 
-void CreateTask(TaskID id, char *name, int exec_time, int period);
+void CreateTask(char *name, int exec_time, int period);
 void InitTask( void *pvParameters );
 
 static void RunTask( void *pvParameters );
 static void UpdatePriorities(void);
 static __inline Tick NextDeadline(TaskInfo *task);
-static __inline void DoWork(void);
+static __inline void DoWork(TaskInfo *task);
+static void WorkDone(xTimerHandle timer);
 
 #endif

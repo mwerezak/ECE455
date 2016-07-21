@@ -66,17 +66,13 @@
  * See http://www.freertos.org/a00110.html.
  *----------------------------------------------------------*/
 
-//Timing conversions
-#define MILLISECONDS(ms) (ms / portTICK_RATE_MS)
-#define TICKS(ticks) (ticks * portTICK_RATE_MS)
-
 #define configUSE_PREEMPTION			1
 #define configUSE_IDLE_HOOK				0
 #define configUSE_TICK_HOOK				0
 #define configCPU_CLOCK_HZ				( ( unsigned long ) 12000000 )
 #define configTICK_RATE_HZ				( ( portTickType ) 1000 )
-#define configMINIMAL_STACK_SIZE		( ( unsigned short ) 70 )
-#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 2048 ) )
+#define configMINIMAL_STACK_SIZE		( ( unsigned short ) 2*70 )
+#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 2*2048 ) )
 #define configMAX_TASK_NAME_LEN			( 12 )
 #define configUSE_TRACE_FACILITY		1 /* This is set to one so each task is given a unique number, which is then used to generate the logic analyzer output. */
 #define configUSE_16_BIT_TICKS			0
@@ -84,6 +80,10 @@
 #define configUSE_CO_ROUTINES 			0
 #define configUSE_MUTEXES				0
 #define configUSE_RECURSIVE_MUTEXES		0
+#define configUSE_TIMERS                1
+#define configTIMER_TASK_PRIORITY       10
+#define configTIMER_QUEUE_LENGTH        1
+#define configTIMER_TASK_STACK_DEPTH    configMINIMAL_STACK_SIZE
 #define configCHECK_FOR_STACK_OVERFLOW	0
 
 #define configMAX_PRIORITIES			( 10 )
