@@ -99,7 +99,7 @@ static void RunTask( void *pvParameters )
 	{
 		//start doing work
 		this->work_done = 0;
-		this->deadline_period = this->deadline_period2; //workaround for memory corruption issue caused by enabling timers
+		this->deadline_period = this->deadline_period2; //workaround for memory corruption issue caused by enabling timers (???)
 		next_deadline = NextDeadline(this);
 		while(this->work_done < this->work_required)
 		{
@@ -145,9 +145,9 @@ static __inline void DoWork(TaskInfo *task)
 		task->working = 1;
 		xTimerStart(task->timer, TICKS(WORK_PERIOD));
 	}
+	taskEXIT_CRITICAL();
 
 	while(task->working); //block until the work is done
-	taskEXIT_CRITICAL();
 }
 
 static void WorkDone(xTimerHandle timer)
